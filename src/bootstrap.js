@@ -2,20 +2,27 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import { BrowserRouter } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import reducers from "./reducers";
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 import "./style/main.scss";
+
+import history from "./history";
+
 import Layout from "./components/Layout";
 
 function main() {
   ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-      <BrowserRouter>
-        <Layout></Layout>
-      </BrowserRouter>
+      <Router history={history}>
+        <Layout>
+          <Switch>
+            <Route path="/" exact compenent={} />
+          </Switch>
+        </Layout>
+      </Router>
     </Provider>,
     document.querySelector(".app-wrapper")
   );
