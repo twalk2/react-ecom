@@ -13,7 +13,7 @@ class Header extends Component {
               <a
                 className="header__link"
                 key={index}
-                onClick={() => console.log("switching tabs")}
+                onClick={() => history.push(link.path)}
               >
                 {link.title}
               </a>
@@ -26,7 +26,7 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  const { headerLinks } = state.headernavbar;
+  const { headerLinks } = state.headerNavbar;
   return {
     headerLinks
   };
