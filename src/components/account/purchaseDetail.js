@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 function PurchaseDetailLabel({ className, title, value }) {
   return (
     <div className={`${className} purchase-detail-label`}>
-      <div className="purchase-detail-label__label">{title}</div>
+      <div className="purchase-detail-label__title">{title}</div>
       <div className="purchase-detail-label__value">{value}</div>
     </div>
   );
@@ -22,6 +22,7 @@ class PurchaseDetail extends Component {
       creditCard
     } = this.props;
     const { name, shippingAddress } = user;
+    const nameAddress = `${name}\n${shippingAddress}`;
     console.log(orderDate);
     return (
       <div className={`${className} purchase-detail`}>
@@ -38,7 +39,7 @@ class PurchaseDetail extends Component {
         <PurchaseDetailLabel
           className="purchase-detail__shipping"
           title="Shipping Address"
-          value={`${name}\n${shippingAddress}`}
+          value={nameAddress}
         />{" "}
         <PurchaseDetailLabel
           className="purchase-detail__total"
@@ -50,6 +51,8 @@ class PurchaseDetail extends Component {
           title="Credit Card"
           value={creditCard}
         />
+        <a className="purchase-detail__track-shipment">Track Shipment</a>
+        <a className="purchase-detail__print-receipt">Print Receipt</a>
       </div>
     );
   }
